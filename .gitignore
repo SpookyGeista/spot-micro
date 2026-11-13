@@ -1,0 +1,27 @@
+__pycache__/
+*.py[cod]
+.venv/
+work/
+logs/
+outputs/
+assets/spot_micro/generated/
+assets/spot_micro_original/generated/
+*.egg-info/
+.pytest_cache/
+configs/hardware.json
+
+# Local credentials, calibration and editor files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.log
+.DS_Store
+.idea/
+.vscode/
+.codex/
+.agents/
+.aws/
