@@ -1,0 +1,165 @@
+{
+  "description": "Original SpotMicro MG996R-family geometry; mass and bounding-box inertias are provisional, not hardware-identified. Higher-speed experimental training profile; command targets are not achieved performance.",
+  "control_dt": 0.02,
+  "nominal_base_height_m": 0.225296,
+  "physics_dt": 0.002,
+  "history_length": 5,
+  "gait_frequency_hz": 1.0,
+  "gravity_filter_tau_s": 0.5,
+  "action_filter_tau_s": 0.04,
+  "max_target_rate_rad_s": 2.5,
+  "joint_names": [
+    "motor_front_left_hip",
+    "motor_front_left_upper_leg",
+    "motor_front_left_lower_leg",
+    "motor_front_right_hip",
+    "motor_front_right_upper_leg",
+    "motor_front_right_lower_leg",
+    "motor_back_left_hip",
+    "motor_back_left_upper_leg",
+    "motor_back_left_lower_leg",
+    "motor_back_right_hip",
+    "motor_back_right_upper_leg",
+    "motor_back_right_lower_leg"
+  ],
+  "rest_positions_rad": [
+    0.1,
+    0.55,
+    -1.1,
+    -0.1,
+    0.55,
+    -1.1,
+    0.1,
+    0.55,
+    -1.1,
+    -0.1,
+    0.55,
+    -1.1
+  ],
+  "action_scale_rad": [
+    0.25,
+    0.45,
+    0.55,
+    0.25,
+    0.45,
+    0.55,
+    0.25,
+    0.45,
+    0.55,
+    0.25,
+    0.45,
+    0.55
+  ],
+  "joint_lower_rad": [
+    -0.55,
+    -0.15,
+    -2.35,
+    -0.55,
+    -0.15,
+    -2.35,
+    -0.55,
+    -0.15,
+    -2.35,
+    -0.55,
+    -0.15,
+    -2.35
+  ],
+  "joint_upper_rad": [
+    0.55,
+    1.55,
+    -0.35,
+    0.55,
+    1.55,
+    -0.35,
+    0.55,
+    1.55,
+    -0.35,
+    0.55,
+    1.55,
+    -0.35
+  ],
+  "command_scale": [
+    2.0,
+    2.0,
+    1.0
+  ],
+  "gyro_scale": 0.25,
+  "servo": {
+    "stall_torque_nm": 1.0787,
+    "torque_cap_nm": 0.75,
+    "no_load_speed_rad_s": 6.9813,
+    "kp_nm_rad": 8.0,
+    "kd_nm_s_rad": 0.12,
+    "armature_kg_m2": 0.0005,
+    "deadband_rad": 0.01,
+    "max_delay_physics_steps": 10,
+    "strength_range": [
+      0.8,
+      1.1
+    ],
+    "speed_range": [
+      0.8,
+      1.05
+    ],
+    "gain_range": [
+      0.8,
+      1.2
+    ],
+    "position_bias_rad": 0.025
+  },
+  "imu": {
+    "gyro_noise_std_rad_s": 0.015,
+    "gyro_bias_max_rad_s": 0.025,
+    "accel_noise_std_m_s2": 0.15,
+    "accel_bias_max_m_s2": 0.15
+  },
+  "model_family": "spotmicro_original",
+  "urdf_asset_path": "assets/spot_micro_original/spot_micro.urdf",
+  "urdf_sha256": "9019521aaf4e35da92a4c16ec8ef11ce6b7dc7f26de817d96862eeeadc55b74d",
+  "reward_weights": {
+    "track_velocity": 8.0,
+    "track_yaw": 4.2,
+    "target_rate": 0.005,
+    "target_rate_change": 0.0025
+  },
+  "command_curriculum": {
+    "initial_vx_vy_wz": [
+      [
+        0,
+        0.12
+      ],
+      [
+        -0.04,
+        0.04
+      ],
+      [
+        -0.3,
+        0.3
+      ]
+    ],
+    "final_vx_vy_wz": [
+      [
+        -0.12,
+        0.4
+      ],
+      [
+        -0.12,
+        0.12
+      ],
+      [
+        -1.0,
+        1.0
+      ]
+    ]
+  },
+  "tracking_tolerances": {
+    "linear_m_s": 0.15,
+    "yaw_rad_s": 0.4
+  },
+  "teleop_speeds": {
+    "forward_m_s": 0.3,
+    "backward_m_s": 0.12,
+    "lateral_m_s": 0.12,
+    "yaw_rad_s": 1.0
+  }
+}

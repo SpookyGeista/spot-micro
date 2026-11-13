@@ -1,0 +1,51 @@
+{
+  "seed": 2052,
+  "num_steps_per_env": 32,
+  "save_interval": 100,
+  "obs_groups": {
+    "policy": [
+      "policy"
+    ],
+    "critic": [
+      "critic"
+    ]
+  },
+  "logger": "tensorboard",
+  "policy": {
+    "class_name": "DirectSquashedActorCritic",
+    "init_noise_std": 0.25,
+    "noise_std_type": "log",
+    "actor_obs_normalization": true,
+    "critic_obs_normalization": true,
+    "actor_hidden_dims": [
+      256,
+      128,
+      64
+    ],
+    "critic_hidden_dims": [
+      256,
+      128,
+      64
+    ],
+    "activation": "elu",
+    "min_noise_std": 0.05,
+    "max_noise_std": 0.5,
+    "latent_mean_bound": 2.0,
+    "action_bound": 0.99999
+  },
+  "algorithm": {
+    "class_name": "PPO",
+    "value_loss_coef": 1.0,
+    "use_clipped_value_loss": true,
+    "clip_param": 0.2,
+    "entropy_coef": 0.003,
+    "num_learning_epochs": 5,
+    "num_mini_batches": 4,
+    "learning_rate": 0.0003,
+    "schedule": "adaptive",
+    "gamma": 0.99,
+    "lam": 0.95,
+    "desired_kl": 0.02,
+    "max_grad_norm": 1.0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "confirmed_print_source": "https://www.thingiverse.com/thing:3761340",
+  "target": "Original SpotMicro / MG996R variant",
+  "candidate_urdf_source": "https://github.com/OpenQuadruped/spot_mini_mini/blob/spotmicroai/spotmicro/util/pybullet_data/assets/urdf/spot.urdf",
+  "upstream_git_blob_sha": "a6cadc437b7485f0f9c13980eb1cd0beda2c0bd1",
+  "local_urdf_sha256": "525a0e3d373e3eaf108d821f377308fe77cbd5cce99e081ee34265bdca11a6fd",
+  "upstream_mass_kg_assumption": 2.52,
+  "inertia_tensors_with_diagonal_100": 19,
+  "ready_for_training": false,
+  "cad_access": "Thingiverse returned HTTP 403 to web fetch; legacy GitLab mirror redirects to sign-in.",
+  "previous_policy_model": "OpenQuadruped redesign, not confirmed printed SpotMicro geometry",
+  "issues_in_unmodified_upstream": [
+    "Inertia tensors are placeholder values and require replacement.",
+    "Joint names and coordinate conventions differ from existing deployment contract.",
+    "Exact STEP/STL dimensions of confirmed MG996R print variant have not yet been verified.",
+    "Real component masses and center of mass remain unmeasured."
+  ],
+  "converted_urdf": "assets/spot_micro_original/spot_micro.urdf",
+  "converted_ready_for_provisional_training": true,
+  "converted_model_manifest": "assets/spot_micro_original/manifest.json",
+  "validation": {
+    "deterministic_stand": "outputs/spotmicro_original_stand.json",
+    "stand_falls": 0,
+    "stand_envs": 8,
+    "stand_duration_s": 5,
+    "integration_run": "logs/2026-11-10_15-36-49_walk_original_tracking8_yaw1p4_check",
+    "onnx_export_verified": true
+  }
+}

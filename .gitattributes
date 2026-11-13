@@ -1,0 +1,15 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.stl binary
+*.pt binary
+*.onnx binary
+*.png binary
+*.gif binary
+*.mp4 binary
+
+# Preserve imported license/readme bytes, including original ASCII-art spacing.
+assets/**/stl/README.txt -text -whitespace
+assets/**/stl/LICENSE.txt -text -whitespace

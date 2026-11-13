@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "i2c_bus": 1,
+  "servo_driver": {
+    "type": null,
+    "address": 64,
+    "frequency_hz": 50,
+    "oscillator_hz": 25000000
+  },
+  "imu": {
+    "address": 104,
+    "rotation_sensor_to_body": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "gyro_bias_rad_s": [
+      0,
+      0,
+      0
+    ],
+    "accel_bias_m_s2": [
+      0,
+      0,
+      0
+    ],
+    "calibrated": false
+  },
+  "limits": {
+    "command_min": [
+      -0.03,
+      -0.04,
+      -0.35
+    ],
+    "command_max": [
+      0.12,
+      0.04,
+      0.35
+    ],
+    "command_timeout_s": 0.5,
+    "max_cycle_s": 0.06,
+    "max_imu_age_s": 0.05,
+    "max_tilt_deg": 45.0
+  },
+  "joints": [
+    {
+      "name": "motor_front_left_hip",
+      "channel": 0,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_front_left_upper_leg",
+      "channel": 1,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_front_left_lower_leg",
+      "channel": 2,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_front_right_hip",
+      "channel": 3,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_front_right_upper_leg",
+      "channel": 4,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_front_right_lower_leg",
+      "channel": 5,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_back_left_hip",
+      "channel": 6,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_back_left_upper_leg",
+      "channel": 7,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_back_left_lower_leg",
+      "channel": 8,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_back_right_hip",
+      "channel": 9,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_back_right_upper_leg",
+      "channel": 10,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    },
+    {
+      "name": "motor_back_right_lower_leg",
+      "channel": 11,
+      "pulse_limits_us": [
+        1000,
+        2000
+      ],
+      "calibrated": false,
+      "points": null
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "description": "Sensor-only DAgger student of logs/2026-11-11_23-51-15_walk_teacher_dynamic_v1/model_500.pt; requires independent rollout validation and hardware calibration.",
+  "control_dt": 0.02,
+  "nominal_base_height_m": 0.225296,
+  "physics_dt": 0.002,
+  "history_length": 20,
+  "gait_frequency_hz": 1.0,
+  "gravity_filter_tau_s": 0.5,
+  "action_filter_tau_s": 0.02,
+  "max_target_rate_rad_s": 7.0,
+  "joint_names": [
+    "motor_front_left_hip",
+    "motor_front_left_upper_leg",
+    "motor_front_left_lower_leg",
+    "motor_front_right_hip",
+    "motor_front_right_upper_leg",
+    "motor_front_right_lower_leg",
+    "motor_back_left_hip",
+    "motor_back_left_upper_leg",
+    "motor_back_left_lower_leg",
+    "motor_back_right_hip",
+    "motor_back_right_upper_leg",
+    "motor_back_right_lower_leg"
+  ],
+  "rest_positions_rad": [
+    0.1,
+    0.55,
+    -1.1,
+    -0.1,
+    0.55,
+    -1.1,
+    0.1,
+    0.55,
+    -1.1,
+    -0.1,
+    0.55,
+    -1.1
+  ],
+  "action_scale_rad": [
+    0.35,
+    0.65,
+    0.85,
+    0.35,
+    0.65,
+    0.85,
+    0.35,
+    0.65,
+    0.85,
+    0.35,
+    0.65,
+    0.85
+  ],
+  "joint_lower_rad": [
+    -0.55,
+    -0.15,
+    -2.35,
+    -0.55,
+    -0.15,
+    -2.35,
+    -0.55,
+    -0.15,
+    -2.35,
+    -0.55,
+    -0.15,
+    -2.35
+  ],
+  "joint_upper_rad": [
+    0.55,
+    1.55,
+    -0.35,
+    0.55,
+    1.55,
+    -0.35,
+    0.55,
+    1.55,
+    -0.35,
+    0.55,
+    1.55,
+    -0.35
+  ],
+  "command_scale": [
+    2.0,
+    2.0,
+    1.0
+  ],
+  "gyro_scale": 0.25,
+  "servo": {
+    "stall_torque_nm": 1.0787,
+    "torque_cap_nm": 0.75,
+    "no_load_speed_rad_s": 6.9813,
+    "kp_nm_rad": 8.0,
+    "kd_nm_s_rad": 0.12,
+    "armature_kg_m2": 0.0005,
+    "deadband_rad": 0.01,
+    "max_delay_physics_steps": 10,
+    "strength_range": [
+      0.8,
+      1.1
+    ],
+    "speed_range": [
+      0.8,
+      1.05
+    ],
+    "gain_range": [
+      0.8,
+      1.2
+    ],
+    "position_bias_rad": 0.025
+  },
+  "imu": {
+    "gyro_noise_std_rad_s": 0.015,
+    "gyro_bias_max_rad_s": 0.025,
+    "accel_noise_std_m_s2": 0.15,
+    "accel_bias_max_m_s2": 0.15
+  },
+  "model_family": "spotmicro_original",
+  "urdf_asset_path": "assets/spot_micro_original/spot_micro.urdf",
+  "urdf_sha256": "9019521aaf4e35da92a4c16ec8ef11ce6b7dc7f26de817d96862eeeadc55b74d",
+  "reward_weights": {
+    "track_velocity": 8.0,
+    "track_yaw": 4.2,
+    "target_rate": 0.0003,
+    "target_rate_change": 0.0001,
+    "contact_schedule": 0.0,
+    "foot_slip": 0.1,
+    "foot_clearance": 0.0,
+    "touchdown": 0.0,
+    "body_wobble": 0.0,
+    "posture_moving": 0.0,
+    "posture_standing": 0.32,
+    "torque": 0.02,
+    "tracking_error": 2.0,
+    "air_time": 0.4,
+    "stand_contacts": 1.0,
+    "stand_joint_motion": 0.05
+  },
+  "command_curriculum": {
+    "initial_vx_vy_wz": [
+      [
+        -0.12,
+        0.8
+      ],
+      [
+        -0.12,
+        0.12
+      ],
+      [
+        -0.7,
+        0.7
+      ]
+    ],
+    "final_vx_vy_wz": [
+      [
+        -0.12,
+        0.8
+      ],
+      [
+        -0.12,
+        0.12
+      ],
+      [
+        -0.7,
+        0.7
+      ]
+    ]
+  },
+  "tracking_tolerances": {
+    "linear_m_s": 0.4,
+    "yaw_rad_s": 0.5
+  },
+  "teleop_speeds": {
+    "forward_m_s": 0.6,
+    "backward_m_s": 0.12,
+    "lateral_m_s": 0.12,
+    "yaw_rad_s": 0.6
+  },
+  "reward_parameters": {
+    "gait_style": {
+      "toe_center_lower_leg_m": [
+        0.00378067358687,
+        0,
+        -0.123939641439
+      ],
+      "ground_radius_proxy_m": 0.01640257,
+      "clearance_m": 0.025,
+      "ramp_transitions": 1,
+      "geometry_note": "Toe-center and radius proxies derived from original toe collision mesh and fixed joint; not exact measured contact positions."
+    },
+    "locomotion_v2": {
+      "air_time_target_s": 0.14,
+      "stand_tracking_sigma_m_s": 0.05
+    }
+  },
+  "policy_role": "student",
+  "gait_frequency_schedule": {
+    "base_hz": 1.5,
+    "gain_hz_per_m_s": 1.5,
+    "max_hz": 3.5
+  },
+  "observe_acceleration": true,
+  "accel_scale": 0.1,
+  "accel_clip_m_s2": 39.24
+}

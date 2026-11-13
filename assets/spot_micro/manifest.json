@@ -1,0 +1,131 @@
+{
+  "repository": "https://github.com/OpenQuadruped/spot_mini_mini",
+  "commit": "c7e4905be176c63fa0e68a09c177b937e916fa60",
+  "files": [
+    {
+      "path": "upstream.urdf",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/spot.urdf",
+      "sha256": "a23b5713dbb0f8bff10611312de1df6bec5447f53a7a8f9c6b8e18f9e528421a",
+      "bytes": 25520
+    },
+    {
+      "path": "stl/OpenQuadruped/Back.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Back.stl",
+      "sha256": "0fd53d48c185533763caf279d3d2350074b325c0c946ed7e56dc32954ada827f",
+      "bytes": 132884
+    },
+    {
+      "path": "stl/OpenQuadruped/Back_Bracket.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Back_Bracket.stl",
+      "sha256": "adc5585cfca344178860bbba5c97facbd136de7e8729d8f2f3163b14deea2b19",
+      "bytes": 745084
+    },
+    {
+      "path": "stl/OpenQuadruped/Battery.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Battery.stl",
+      "sha256": "f5eef7c52fb3caedc0946a63fff6b3e02f445ac62a6c17f1de886673ae1b8ba7",
+      "bytes": 684
+    },
+    {
+      "path": "stl/OpenQuadruped/Chassis_Left_Side.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Chassis_Left_Side.stl",
+      "sha256": "ba819c877094f6645d2283f8db0cadda09a7cf330d484a1a4ee96b2216fe1f72",
+      "bytes": 411984
+    },
+    {
+      "path": "stl/OpenQuadruped/Chassis_Right_Side.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Chassis_Right_Side.stl",
+      "sha256": "ba819c877094f6645d2283f8db0cadda09a7cf330d484a1a4ee96b2216fe1f72",
+      "bytes": 411984
+    },
+    {
+      "path": "stl/OpenQuadruped/Front.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Front.stl",
+      "sha256": "b328ab2beaeadaee40313a71fceb5a1b17146cf272e95466394dae5bcf62c122",
+      "bytes": 144684
+    },
+    {
+      "path": "stl/OpenQuadruped/Front_Bracket.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/Front_Bracket.stl",
+      "sha256": "c3356d2da50c1661582198d6d3d7d5bc0e2b23cf41165171be8b2de4c2d5d9be",
+      "bytes": 742784
+    },
+    {
+      "path": "stl/OpenQuadruped/LEFT_FOOT.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/LEFT_FOOT.stl",
+      "sha256": "3ae84663f8477ebabc51cfdd2e8d30e714048335de8eeab737381c977b97ded1",
+      "bytes": 779684
+    },
+    {
+      "path": "stl/OpenQuadruped/LEFT_HIP.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/LEFT_HIP.stl",
+      "sha256": "6e0a3d16a59ca4704bab8e944812654b9589851223efe363f467720ad1e2cba4",
+      "bytes": 714884
+    },
+    {
+      "path": "stl/OpenQuadruped/LEFT_LOWER_LEG.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/LEFT_LOWER_LEG.stl",
+      "sha256": "204d537b92f8974f1b619306e597a41d29133c04dfa664ec5d848411418186c5",
+      "bytes": 409384
+    },
+    {
+      "path": "stl/OpenQuadruped/LEFT_UPPER_LEG.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/LEFT_UPPER_LEG.stl",
+      "sha256": "5b76a6b416d170e9d25c3e619a4d16ebcfeefcc252e171626d8a681f2cde3000",
+      "bytes": 1419184
+    },
+    {
+      "path": "stl/OpenQuadruped/MAINBODY.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/MAINBODY.stl",
+      "sha256": "44213962cc1c06108f21d95f6ac1f84372db67b9fe7e8ed725a741f79730989d",
+      "bytes": 9704384
+    },
+    {
+      "path": "stl/OpenQuadruped/RIGHT_FOOT.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/RIGHT_FOOT.stl",
+      "sha256": "e0c7456b0b65c77c074282a68a01939d2f429cec4ef8cbc52fa7ab0243e9542d",
+      "bytes": 776084
+    },
+    {
+      "path": "stl/OpenQuadruped/RIGHT_HIP.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/RIGHT_HIP.stl",
+      "sha256": "47cb50891a83ea02c6f09bf53f9b60b74fa981caa96d95afde5494dc1cf1f6ce",
+      "bytes": 713784
+    },
+    {
+      "path": "stl/OpenQuadruped/RIGHT_LOWER_LEG.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/RIGHT_LOWER_LEG.stl",
+      "sha256": "ec4eb47e759edcaef910444786f8c3bac0bd552917fd567531906674faea392e",
+      "bytes": 409384
+    },
+    {
+      "path": "stl/OpenQuadruped/RIGHT_UPPER_LEG.stl",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/OpenQuadruped/RIGHT_UPPER_LEG.stl",
+      "sha256": "9f0b6784d4751c058e4748ddac6e72de511ceb66c6b12a51d7d445bfc141f520",
+      "bytes": 1418384
+    },
+    {
+      "path": "stl/LICENSE.txt",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/LICENSE.txt",
+      "sha256": "2a6c54c2ee67193ff9d766e44299b7f9d47ef460aa3709360a6e136818cba75e",
+      "bytes": 183
+    },
+    {
+      "path": "stl/README.txt",
+      "upstream_path": "spotmicro/util/pybullet_data/assets/urdf/stl/README.txt",
+      "sha256": "2a894386b5776e642b5c5dce7481b0d6c0df5bc97571dfef8bc62f8d0f1d657a",
+      "bytes": 3486
+    },
+    {
+      "path": "LICENSE",
+      "upstream_path": "LICENSE",
+      "sha256": "aaec714038636f67258b88628aa560742c1cbcf981f8905bbe08581cb082432e",
+      "bytes": 1070
+    }
+  ],
+  "changes": [
+    "Resolve ROS package mesh paths to local relative paths",
+    "Replace placeholder joint effort/velocity bounds; actual servo envelope is applied in ServoDynamics",
+    "Remove nonstandard duplicate inertia attributes"
+  ]
+}

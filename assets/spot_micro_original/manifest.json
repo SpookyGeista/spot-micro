@@ -1,0 +1,384 @@
+{
+  "repository": "https://github.com/OpenQuadruped/spot_mini_mini",
+  "commit": "bf91ab37620cbb036968952da92773522361aad7",
+  "confirmed_print_source": "https://www.thingiverse.com/thing:3445283",
+  "geometry_match": "Original SpotMicro family; exact servo-horn/CAD variant not independently verified",
+  "mass_kg": 2.5200000000000005,
+  "inertia_assumptions": [
+    {
+      "link": "body_shell",
+      "mass_kg": 1.2,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.14,
+        0.11,
+        0.07
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "chassis_front_link",
+      "mass_kg": 0.05,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.058,
+        0.11,
+        0.07
+      ],
+      "com_in_link_m": [
+        -0.145,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "chassis_rear_link",
+      "mass_kg": 0.05,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.04,
+        0.11,
+        0.07
+      ],
+      "com_in_link_m": [
+        0.135,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "front_left_hip",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.044,
+        0.038,
+        0.07
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "front_left_upper_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.028,
+        0.036,
+        0.12
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "front_left_lower_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.026,
+        0.02,
+        0.115
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "front_left_toe",
+      "mass_kg": 0.005,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.03831954574584961,
+        0.020000000000035604,
+        0.019412437438964848
+      ],
+      "com_in_link_m": [
+        0.0037806735868718263,
+        -1.7801732310473994e-14,
+        -0.008939641439116039
+      ]
+    },
+    {
+      "link": "front_right_hip",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.044,
+        0.038,
+        0.07
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "front_right_upper_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.028,
+        0.036,
+        0.12
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "front_right_lower_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.026,
+        0.02,
+        0.115
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "front_right_toe",
+      "mass_kg": 0.005,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.03831954574584961,
+        0.020000000000035604,
+        0.019412437438964848
+      ],
+      "com_in_link_m": [
+        0.0037806735868718263,
+        -1.7801732310473994e-14,
+        -0.008939641439116039
+      ]
+    },
+    {
+      "link": "back_left_hip",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.044,
+        0.038,
+        0.07
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "back_left_upper_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.028,
+        0.036,
+        0.12
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "back_left_lower_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.026,
+        0.02,
+        0.115
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "back_left_toe",
+      "mass_kg": 0.005,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.03831954574584961,
+        0.020000000000035604,
+        0.019412437438964848
+      ],
+      "com_in_link_m": [
+        0.0037806735868718263,
+        -1.7801732310473994e-14,
+        -0.008939641439116039
+      ]
+    },
+    {
+      "link": "back_right_hip",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.044,
+        0.038,
+        0.07
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "link": "back_right_upper_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.028,
+        0.036,
+        0.12
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "back_right_lower_leg",
+      "mass_kg": 0.1,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.026,
+        0.02,
+        0.115
+      ],
+      "com_in_link_m": [
+        0.0,
+        0.0,
+        -0.05
+      ]
+    },
+    {
+      "link": "back_right_toe",
+      "mass_kg": 0.005,
+      "method": "uniform collision-bounding box; estimated, not CAD/measured mass distribution",
+      "box_m": [
+        0.03831954574584961,
+        0.020000000000035604,
+        0.019412437438964848
+      ],
+      "com_in_link_m": [
+        0.0037806735868718263,
+        -1.7801732310473994e-14,
+        -0.008939641439116039
+      ]
+    }
+  ],
+  "converted_urdf_sha256": "9019521aaf4e35da92a4c16ec8ef11ce6b7dc7f26de817d96862eeeadc55b74d",
+  "nominal_base_height_m": 0.225296,
+  "changes": [
+    "Replace placeholder inertia with mass-scaled collision bounding-box estimates and their COM",
+    "Normalize body axes with 180-degree fixed root rotation; reverse joint axes/limits and rename joints/links",
+    "Replace nonphysical joint effort/velocity limits; remove source Coulomb friction placeholders (servo dynamics remain active)"
+  ],
+  "hardware_validated": false,
+  "files": [
+    {
+      "path": "upstream.urdf",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/spot.urdf",
+      "sha256": "d1ce220d8bfd24e5ae67b4cfdb6fe854c3eaa3ee236fd7c858b8fec429683c54"
+    },
+    {
+      "path": "stl/backpart.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/backpart.stl",
+      "sha256": "ccbd7fe400d3bd9effa4de6d11526326ebd6015b26496b203a5eab163fe09fcc"
+    },
+    {
+      "path": "stl/foot.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/foot.stl",
+      "sha256": "5fea5fb8e98c6e15a7c0331036f9fb4f4cc605eeb58cef108315ee2f5df9ab9c"
+    },
+    {
+      "path": "stl/frontpart.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/frontpart.stl",
+      "sha256": "8f3cad038d6e83d3cd86feb2de89b1e8a046dbac59a11d465fceb819387a976f"
+    },
+    {
+      "path": "stl/larm.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/larm.stl",
+      "sha256": "dff682561b3c4d3e07e760cbbdd20d001fbf1c6aedde543c396b50a6bccea139"
+    },
+    {
+      "path": "stl/larm_cover.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/larm_cover.stl",
+      "sha256": "1641c12e334994c4fd79348da2112437abc47b8839558d00c1f7454b3525eef0"
+    },
+    {
+      "path": "stl/lfoot.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/lfoot.stl",
+      "sha256": "654070b9b0889941c747454fdacf16eb2c1c1ddba07038b86bd21befe2e61c7a"
+    },
+    {
+      "path": "stl/lshoulder.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/lshoulder.stl",
+      "sha256": "0b656a0ebd8555b53d43e0699a87763cc1aa43b47532d05d6ff67635dcbbef57"
+    },
+    {
+      "path": "stl/mainbody.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/mainbody.stl",
+      "sha256": "eaf156abae7062ab670b48873c464a336f0671889f6cef32d19412d46149b812"
+    },
+    {
+      "path": "stl/rarm.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/rarm.stl",
+      "sha256": "20474ae800e4fba970a9dc128f70f5bb65c07c2eee28c6a25bcd7ee9c7c0af63"
+    },
+    {
+      "path": "stl/rarm_cover.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/rarm_cover.stl",
+      "sha256": "366ca626f8219cd8cd11137da9395cdf01f9ffe46aeb15d3285dc0af7f6adcc3"
+    },
+    {
+      "path": "stl/rfoot.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/rfoot.stl",
+      "sha256": "2e36d7fb6871aabb1d8ffa3ffa04459ecc3e6bbcf61ec6f108d9a5fe8957e3d2"
+    },
+    {
+      "path": "stl/rshoulder.stl",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/rshoulder.stl",
+      "sha256": "52811de8fee7099adf80901ad90cbcb144413d21bc552b3214856addb659d73b"
+    },
+    {
+      "path": "stl/LICENSE.txt",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/LICENSE.txt",
+      "sha256": "2a6c54c2ee67193ff9d766e44299b7f9d47ef460aa3709360a6e136818cba75e"
+    },
+    {
+      "path": "stl/README.txt",
+      "source": "spotmicro/util/pybullet_data/assets/urdf/stl/README.txt",
+      "sha256": "2a894386b5776e642b5c5dce7481b0d6c0df5bc97571dfef8bc62f8d0f1d657a"
+    },
+    {
+      "path": "LICENSE",
+      "source": "LICENSE",
+      "sha256": "aaec714038636f67258b88628aa560742c1cbcf981f8905bbe08581cb082432e"
+    }
+  ]
+}
