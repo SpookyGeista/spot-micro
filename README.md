@@ -1,106 +1,98 @@
 # Spot Micro
 
-Ein 3D-gedruckter Vierbeiner mit zwölf MG996R-Servos, Raspberry Pi 5 und einer in Isaac Lab trainierten Laufsteuerung. Das Repository enthält die Simulation, das Training, die fertige Policy und die Software für MPU-6050 und PCA9685.
+Locomotion learning for a 12-DOF Spot Micro with MG996R servos, Raspberry Pi 5, MPU-6050 and PCA9685. Trained in Isaac Lab and exported to ONNX for a 50 Hz control loop on the Pi.
 
-[![Spot Micro läuft in Isaac Sim](docs/media/walk-preview.gif)](docs/media/walk-060.mp4)
+[![Spot Micro in Isaac Sim](docs/media/walk-preview.gif)](docs/media/walk-060.mp4)
 
-**[Laufvideo · 10 s](docs/media/walk-060.mp4)** · **[Gangbild · 4 s](docs/media/gait-detail.mp4)** · [Pi einrichten](PI_SETUP.md) · [Training](docs/TRAINING.md) · [Druckteile](hardware/README.md)
+[Walking · 10 s](docs/media/walk-060.mp4) · [Gait detail · 4 s](docs/media/gait-detail.mp4) · [Training](docs/TRAINING.md) · [Pi setup](PI_SETUP.md) · [Hardware](hardware/README.md)
 
-Die Aufnahmen zeigen die abgenommene Student-Policy bei 0,6 m/s Sollgeschwindigkeit auf ebenem Boden. Sie stammen aus Isaac Sim. Fahrversuche mit dieser Policy am echten Roboter stehen noch aus.
+**Status:** simulation-validated student policy. Hardware validation of this checkpoint is pending. The footage shows a 0.6 m/s forward command on flat ground.
 
-## Aufbau
+## Policy
 
-| Bauteil | Verwendung |
+A privileged-state teacher is trained with PPO, then distilled into a sensor-only student using DAgger. Training includes uneven terrain, friction and mass randomization, servo variation and external force pulses.
+
+| Property | Value |
 | --- | --- |
-| Raspberry Pi 5 | Policy-Auswertung und Steuerung mit 50 Hz |
-| 12 × MG996R | Drei Gelenke pro Bein |
-| PCA9685 | PWM-Ausgabe für die Servos |
-| MPU-6050 | Beschleunigung und Drehrate über I²C |
-| Separate Servo-Stromversorgung | Versorgung der zwölf Servos; gemeinsame Masse mit der Steuerung |
-| NVIDIA RTX 4090 | Training und Simulation auf dem PC |
+| Inputs | IMU, velocity command, previous filtered joint targets, gait phase |
+| History | 20 frames / 400 ms |
+| Network | 520 inputs, 12 outputs, 175,308 parameters |
+| Control rate | 50 Hz |
+| Deployment | ONNX Runtime on Raspberry Pi 5 |
 
-Die Druckteile stammen von **[Spotmicro – robot dog von KDY0523](https://www.thingiverse.com/thing:3445283)**. Wir haben die Befestigungslöcher der Controller-Platte und die seitlichen Anschlussöffnungen angepasst. Diese beiden STL-Dateien liegen unter [`hardware/modified/`](hardware/modified/).
+The student requires no foot-contact sensors, joint encoders or measured base velocity. Checkpoint, configuration and export: [`policies/rough_student/`](policies/rough_student/).
 
-![Unsere angepassten Druckteile](docs/media/modified-parts.png)
+## Simulation
 
-Laufsteuerung, Trainingsumgebung, Reward-Design, Teacher–Student-Übertragung und Pi-Anbindung sind die Software dieses Projekts. Das Simulationsmodell verwendet importierte URDF- und Mesh-Dateien von OpenQuadruped mit angepasster Dynamik. Quellen und bestehende Lizenzen stehen in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
-## Simulation starten
-
-Voraussetzung ist eine eingerichtete Umgebung mit **Isaac Sim 5.1, Isaac Lab 2.3.2, PyTorch 2.7 und RSL-RL 3.1.2**. Die getestete Conda-Umgebung heißt `unitree_sim_env`. Für einen anderen Namen vorab `export SPOT_CONDA_ENV=DEINE_UMGEBUNG` setzen. Die Einrichtung ist in [docs/TRAINING.md](docs/TRAINING.md) beschrieben.
-
-Im Repository-Ordner:
+Tested with **Isaac Sim 5.1, Isaac Lab 2.3.2, PyTorch 2.7 and RSL-RL 3.1.2** on an RTX 4090. The scripts use the Conda environment `unitree_sim_env`; override it with `SPOT_CONDA_ENV`.
 
 ```bash
-# Früher Trainingsstand: 200 Roboter, Übersichtskamera
+# Early teacher checkpoint — 200 environments
 bash scripts/demo_classroom.sh start
 
-# Abgenommene Policy: dieselbe Szene mit 200 Robotern
+# Final student policy — 200 environments
 bash scripts/demo_classroom.sh fertig
-```
 
-Die erste Simulation schließen, bevor die zweite gestartet wird. Beide erhalten 0,6 m/s Vorwärtsgeschwindigkeit ohne Drehbefehl. Die Demo endet nach zehn Minuten Simulationszeit. `start` ist der erste gespeicherte Teacher-Checkpoint, kein vollständig untrainiertes Netz; `fertig` ist die Sensor-Student-Policy. Beide Checkpoints sind enthalten. Während der Vorführung wird nicht trainiert.
-
-Für eine einzelne, per Tastatur steuerbare Simulation:
-
-```bash
+# Keyboard control — single environment, checkpoint terrain profile
 bash scripts/run.sh live --checkpoint policies/rough_student/model_final.pt
 ```
 
-**W/S** vor/zurück · **A/D** seitwärts · **Q/E** drehen · **Leertaste** Stillstand · **R** zurücksetzen · **Esc** beenden. Das Simulationsfenster muss den Tastaturfokus haben. Die Live-Simulation verwendet das zum Checkpoint gehörende Geländeprofil.
+The batch demos run on flat ground with a 0.6 m/s forward command and zero yaw. The early checkpoint is the first saved teacher state, not a randomly initialized policy.
 
-## Was die Policy kann
+Keyboard: **W/S** forward/reverse, **A/D** lateral, **Q/E** yaw, **Space** stop, **R** reset, **Esc** exit.
 
-Die Student-Policy nutzt eine 400-ms-Historie aus IMU-Daten, Fahrbefehl, bisherigen Sollwinkeln und internem Phasensignal. Sie bekommt weder Fußkontakte noch gemessene Gelenkwinkel oder eine tatsächliche Vorwärtsgeschwindigkeit. Das Netz hat 520 Eingaben, zwölf Ausgaben und 175.308 Parameter.
+## Evaluation
 
-Die abschließenden Tests liefen jeweils mit **32 Robotern für zehn Sekunden pro Fahrbefehl**:
+32 environments, 10 seconds per command. Counts below are fall/reset events.
 
-| Test | Soll | Gemessene Vorwärtsgeschwindigkeit | Sturz-Resets |
+| Terrain | Command | Mean forward speed | Falls |
 | --- | ---: | ---: | ---: |
-| Ebene | 0,4 m/s | 0,384 m/s | 0 |
-| Ebene | 0,6 m/s | 0,590 m/s | 0 |
-| Unebener Boden, Reibungsstreuung und Stöße | 0,4 m/s | 0,343 m/s | 9 |
-| Unebener Boden, Reibungsstreuung und Stöße | 0,6 m/s | 0,520 m/s | 28 |
+| Flat | 0.4 m/s | 0.384 m/s | 0 |
+| Flat | 0.6 m/s | 0.590 m/s | 0 |
+| Rough + randomization + pushes | 0.4 m/s | 0.343 m/s | 9 |
+| Rough + randomization + pushes | 0.6 m/s | 0.520 m/s | 28 |
 
-Auch Stehen und Drehen blieben auf der Ebene in diesen Tests sturzfrei. Im Geländetest sank die Summe der Sturz-Resets von 144 bei der vorherigen Policy auf 37. Zusätzlich gab es 28 Resets an den Geländegrenzen. Ein Roboter kann mehrfach stürzen; die Zahlen sind Ereignisse, keine Prozentwerte.
+Standing and yaw tests on flat ground also completed without falls. Rough-terrain falls decreased from 144 with the previous policy to 37; 28 additional terrain-boundary resets limit the assessment of sustained locomotion.
 
-Seitenstöße von etwa 6,2 N über 120 ms wurden im separaten Test abgefangen. Bei etwa 18,5 N und 37 N über dieselbe Dauer fielen alle 32 Roboter. Die Ergebnisse sind Simulationsergebnisse und keine Belastungsfreigabe für den realen Aufbau. Vollständige Messwerte: [`policies/rough_student/validation.json`](policies/rough_student/validation.json).
+In separate lateral-push tests, 6.2 N pulses lasting 120 ms caused no falls. At 18.5 N and 37 N, all 32 robots fell. Full results: [`validation.json`](policies/rough_student/validation.json).
 
-## Auf dem Raspberry Pi
-
-Die exportierte Policy liegt in [`policies/rough_student/export/`](policies/rough_student/export/). Auf dem Pi werden weder Isaac Sim noch eine NVIDIA-GPU benötigt.
+## Raspberry Pi
 
 ```bash
 python3 -m venv .venv
 .venv/bin/pip install -r requirements-pi.txt
+
+# Inference benchmark, no actuator output
 .venv/bin/python scripts/pi_inference.py policies/rough_student/export --benchmark 1000
-```
 
-Der Benchmark bewegt keine Motoren. Vor dem ersten Lauf müssen IMU-Ausrichtung, Servo-Kanäle, Drehrichtungen, Nullstellungen und Bewegungsgrenzen zum realen Aufbau passen. Die Schritte stehen in [PI_SETUP.md](PI_SETUP.md).
-
-Ein separates Paket für den Pi lässt sich so erzeugen:
-
-```bash
+# Deployment package
 python scripts/package_pi.py policies/rough_student/export \
   --validation policies/rough_student/validation.json \
   --output outputs/spot_micro_pi.zip
 ```
 
-## Projektstruktur
+Hardware commissioning covers IMU orientation, servo mapping, direction, offsets and joint limits: [PI_SETUP.md](PI_SETUP.md). Servos use a separate power supply with a common ground.
 
-| Ordner | Inhalt |
+## Mechanical design
+
+Original printed parts: **[Spotmicro – robot dog by KDY0523](https://www.thingiverse.com/thing:3445283)**. Our modifications change the controller mounting holes and side-panel connector openings. STL files: [`hardware/modified/`](hardware/modified/).
+
+![Modified controller and side plates](docs/media/modified-parts.png)
+
+The simulation uses OpenQuadruped URDF and mesh assets with modified dynamics. Our software covers the training environment, rewards, servo model, teacher–student transfer and Pi integration. The modified print files do not automatically change the simulation geometry or inertias.
+
+## Repository
+
+| Path | Contents |
 | --- | --- |
-| `spot_micro/` | Simulation, Rewards, Servomodell, Policy-Laufzeit und Hardwaretreiber |
-| `scripts/` | Training, Auswertung, Demos und Pi-Werkzeuge |
-| `configs/` | Roboterprofile und Beispiel für die Hardwarekalibrierung |
-| `policies/` | Abgenommene Student-Policy und früher Teacher für die Demo |
-| `assets/` | Simulationsmodelle mit Quellen und Lizenzhinweisen |
-| `hardware/` | Angepasste Druckteile |
-| `tests/` | Tests für Steuerung, Beobachtungen und Hardwareanbindung |
-| `docs/` | Training, Veröffentlichungsnotizen, Videos und Bilder |
+| `spot_micro/` | Environment, rewards, servo dynamics, runtime and drivers |
+| `scripts/` | Training, evaluation, demos and deployment tools |
+| `configs/` | Robot profiles and hardware calibration template |
+| `policies/` | Final student, ONNX export and early teacher checkpoint |
+| `assets/` | Simulation models and upstream licenses |
+| `hardware/` | Modified print files |
+| `tests/` | Control, observation and hardware-interface tests |
 
-Lokale Trainingsläufe, Messreihen, Zugangsdaten und die individuelle Hardwarekalibrierung werden nicht versioniert. Die Checkpoints für die Demo und der Pi-Export sind ausdrücklich in `policies/` enthalten.
+## Attribution
 
-## Quellen und Nutzungsrechte
-
-Die Originaldruckteile von KDY0523 sind in den übernommenen Lizenzhinweisen als **CC BY 3.0** ausgewiesen. Die übernommenen OpenQuadruped-Dateien enthalten ihre MIT-Lizenz. Änderungen an den Druckteilen sind in [hardware/README.md](hardware/README.md) dokumentiert. Für die eigenen Softwareanteile wurde bislang keine zusätzliche Open-Source-Lizenz festgelegt; die Drittanbieter-Lizenzen gelten nur für die jeweils zugeordneten Dateien.
+KDY0523 print assets retain their **CC BY 3.0** attribution. Imported OpenQuadruped files retain their **MIT** notice; mesh-specific licenses apply separately. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). No open-source license has yet been assigned to this project's original software.
